@@ -62,6 +62,17 @@ public class AdministratorController {
         return "administrator/login";
     }
 
+    /**
+     * フォームからメールアドレスとパスワードを受け取り、
+     * 不備があればエラーメッセージを表示させ、ログイン画面にフォーワードする
+     * ログイン成功の場合は、従業員情報一覧ページにリダイレクトする
+     * 
+     * @param form
+     * @param result　エラーメッセージを格納するオブジェクト
+     * @param administratorName　管理者名を格納するセッションスコープ
+     * @param model
+     * @return リダイレクト先
+     */
     @PostMapping("/login")
     public String login(
     @Validated LoginForm form
@@ -82,6 +93,10 @@ public class AdministratorController {
         }
     }
 
+    /**
+     * 従業員情報一覧ページにフォワード
+     * @return 従業員情報一覧ページ
+     */
     @RequestMapping("/employee/showList")
     public String showList() {
         return "employee/list";
