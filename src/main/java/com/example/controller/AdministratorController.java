@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * 管理者テーブルに対応するコントローラクラス
  * 必要な情報をフォームから受け取り、サービスを通じて処理を行う
+ * @Author 野上
  */
 @Controller
 @RequestMapping("/")
@@ -48,7 +49,7 @@ public class AdministratorController {
         Administrator administrator = new Administrator();
         BeanUtils.copyProperties(form, administrator);
         service.insert(administrator);
-        return "/";
+        return "redirect:/";
 
     }
 

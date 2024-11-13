@@ -15,6 +15,7 @@ import com.example.domain.Employee;
 
 /**
  * employeesテーブルを操作するリポジトリクラス
+ * @Author 野上
  */
 @Repository
 public class EmployeeRepository {

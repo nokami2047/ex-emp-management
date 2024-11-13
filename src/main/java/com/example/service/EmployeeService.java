@@ -11,6 +11,7 @@ import com.example.repository.EmployeeRepository;
 
 /**
  * employeesテーブルを操作するサービスクラス
+ * @Author 野上
  */
 @Service
 @Transactional
@@ -36,5 +37,13 @@ public class EmployeeService {
     public Employee showDetail(Integer id) {
         Employee employee = eRepository.load(id);
         return employee;
+    }
+
+    /**
+     * リポジトリを通じて従業員情報を更新する
+     * @param employee
+     */
+    public void update(Employee employee) {
+        eRepository.update(employee);
     }
 }

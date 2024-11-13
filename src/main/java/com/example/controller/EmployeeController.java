@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.Employee;
 import com.example.form.UpdateEmployeeForm;
@@ -30,6 +30,7 @@ public class EmployeeController {
      * 従業員一覧画面にフォワードする
      * @param model
      * @return　従業員一覧画面
+     * @Author 野上
      */
     @GetMapping("/showList")
     public String showList(Model model) {
@@ -52,5 +53,14 @@ public class EmployeeController {
         Employee employee = eService.showDetail(Integer.parseInt(id));
         model.addAttribute("employee", employee);
         return "employee/detail";
-    } 
+    }
+
+    @PostMapping("/update")
+    public String update(UpdateEmployeeForm form) {
+        Employee employee = eService.showDetail(Integer.parseInt(form.getId()));
+        employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
+
+        eService.update(employee);
+        return "redirect:/employee/showList";
+    }
 }

@@ -2,6 +2,7 @@ package com.example.form;
 
 /**
  * ログイン画面に対応するフォームクラス
+ * @Author 野上
  */
 public class LoginForm {
 

@@ -97,44 +97,44 @@
                 <th>扶養人数</th>
               </tr>
             </thead>
-            <tbody th:if="${not #lists.isEmpty(employeeList)}">
-              <tr th:each="employee:${employeeList}">
+            <tbody>
+              <tr>
                 <td>
-                  <a th:href="@{/employee/{id}/showDetail/(id=${employee.id})}">
-                    <span th:text="${employee.name}">山田太郎</span>
+                  <a href="detail.html">
+                    <span>山田太郎</span>
                   </a>
                 </td>
                 <td>
-                  <span th:text="${employee.hireDate}">2016/12/1</span>
+                  <span>2016/12/1</span>
                 </td>
                 <td>
-                  <span th:text="${employee.dependentsCount}">3人</span>
+                  <span>3人</span>
                 </td>
               </tr>
-              <tr th:each="employee2:${employeeList}">
+              <tr>
                 <td>
-                  <a th:href="@{/employee/{id}/showDetail/(id=${employee.id})}">
-                    <span th:text="${employee2.name}">山田太郎</span>
+                  <a href="detail.html">
+                    <span>山田太郎</span>
                   </a>
                 </td>
                 <td>
-                  <span th:text="${employee2.hireDate}">2016/12/1</span>
+                  <span>2016/12/1</span>
                 </td>
                 <td>
-                  <span th:text="${employee2.dependentsCount}">3人</span>
+                  <span>3人</span>
                 </td>
               </tr>
-              <tr th:each="employee3:${employeeList}">
+              <tr>
                 <td>
-                  <a th:href="@{/employee/{id}/showDetail/(id=${employee.id})}">
-                    <span th:text="${employee3.name}">山田太郎</span>
+                  <a href="detail.html">
+                    <span>山田太郎</span>
                   </a>
                 </td>
                 <td>
-                  <span th:text="${employee3.hireDate}">2016/12/1</span>
+                  <span>2016/12/1</span>
                 </td>
                 <td>
-                  <span th:text="${employee3.dependentsCount}">3人</span>
+                  <span>3人</span>
                 </td>
               </tr>
             </tbody>

@@ -9,6 +9,7 @@ import com.example.repository.AdministratorRepository;
 
 /**
  * administratorsテーブルを操作するサービスクラス
+ * @Author 野上
  */
 @Service
 @Transactional

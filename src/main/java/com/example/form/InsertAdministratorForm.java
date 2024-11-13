@@ -2,6 +2,7 @@ package com.example.form;
 
 /**
  * 管理者登録画面に対応するフォームクラス
+ * @Author 野上
  */
 public class InsertAdministratorForm {
 

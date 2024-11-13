@@ -13,6 +13,7 @@ import com.example.domain.Administrator;
 
 /**
  * administratorsテーブルを操作するリポジトリクラス
+ * @Author 野上
  */
 @Repository
 public class AdministratorRepository {

@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * employeesテーブルに対応するドメインクラス
+ * @Author 野上
  */
 public class Employee {
 
