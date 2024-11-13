@@ -55,6 +55,10 @@ public class EmployeeController {
         return "employee/detail";
     }
 
+    /**
+     * フォームからidを受け取り、
+     * サービスクラスを通じて扶養人数を更新する
+     */
     @PostMapping("/update")
     public String update(UpdateEmployeeForm form) {
         Employee employee = eService.showDetail(Integer.parseInt(form.getId()));

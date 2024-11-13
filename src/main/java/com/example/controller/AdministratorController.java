@@ -103,4 +103,10 @@ public class AdministratorController {
         return "employee/list";
     }
 
+    @GetMapping("/logout")
+    public String logout(LoginForm form, HttpSession session) {
+        session.invalidate();
+        return "administrator/login";
+    }
+
 }
