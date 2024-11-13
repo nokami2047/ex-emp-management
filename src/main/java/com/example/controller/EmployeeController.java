@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.Employee;
+import com.example.form.UpdateEmployeeForm;
 import com.example.service.EmployeeService;
 
 /**
@@ -35,4 +38,19 @@ public class EmployeeController {
 
         return "employee/list";
     }
+
+    /**
+     * フォームからidを受け取り、
+     * サービスクラスを通じて扶養人数を更新する
+     * @param id
+     * @param model
+     * @param form
+     * @return 詳細画面
+     */
+    @GetMapping(value = "/{id}/showDetail")
+    public String showDetail(@PathVariable("id") String id, Model model, UpdateEmployeeForm form) {
+        Employee employee = eService.showDetail(Integer.parseInt(id));
+        model.addAttribute("employee", employee);
+        return "employee/detail";
+    } 
 }

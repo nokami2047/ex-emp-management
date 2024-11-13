@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,8 @@ public class EmployeeRepository {
      */
     public List<Employee> findAll() {
         String sql = "SELECT * FROM employees ORDER BY hire_date DESC";
-        List<Employee> employeeList = template.query(sql, EMPLOYEE_ROW_MAPPER);
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList = template.query(sql, EMPLOYEE_ROW_MAPPER);
 
         return employeeList;
     } 
@@ -58,8 +60,9 @@ public class EmployeeRepository {
      */
     public Employee load(Integer id) {
         String sql = "SELECT * FROM employees WHERE id=:id";
+        Employee employee = new Employee();
         SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
-        Employee employee = template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
+        employee = template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
 
         return employee;
     } 
@@ -76,7 +79,7 @@ public class EmployeeRepository {
         if(employee.getId() == null) {
             System.out.println("データがありません");
         } else {
-            String sql = "UPDATE employees SET name=:name,image=:image,gender=:gender,hire_date=:hireDate,mail_address=:mailAddress,zip_code=:zipCode,address=:address,telephone=:telephoe,salary=:salary,characteristics=:characteristics,dependents_count=:dependentsCount WHERE id=:id";
+            String sql = "UPDATE employees SET name=:name,image=:image,gender=:gender,hire_date=:hireDate,mail_address=:mailAddress,zip_code=:zipCode,address=:address,telephone=:telephone,salary=:salary,characteristics=:characteristics,dependents_count=:dependentsCount WHERE id=:id";
 
             template.update(sql, param);
         } 

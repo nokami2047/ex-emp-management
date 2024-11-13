@@ -27,4 +27,14 @@ public class EmployeeService {
         List<Employee> employeesList = eRepository.findAll();
         return employeesList;
     }
+
+    /**
+     * リポジトリを通じて従業員情報を取得する
+     * @param id
+     * @return　従業員情報
+     */
+    public Employee showDetail(Integer id) {
+        Employee employee = eRepository.load(id);
+        return employee;
+    }
 }
