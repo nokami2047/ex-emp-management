@@ -3,6 +3,9 @@ package com.example.controller;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +14,8 @@ import com.example.domain.Administrator;
 import com.example.form.InsertAdministratorForm;
 import com.example.form.LoginForm;
 import com.example.service.AdministratorService;
+
+import jakarta.servlet.http.HttpSession;
 
 /**
  * 管理者テーブルに対応するコントローラクラス
@@ -56,4 +61,45 @@ public class AdministratorController {
     public String toLogin(LoginForm form) {
         return "administrator/login";
     }
+
+    /**
+     * フォームからメールアドレスとパスワードを受け取り、
+     * 不備があればエラーメッセージを表示させ、ログイン画面にフォーワードする
+     * ログイン成功の場合は、従業員情報一覧ページにリダイレクトする
+     * 
+     * @param form
+     * @param result　エラーメッセージを格納するオブジェクト
+     * @param administratorName　管理者名を格納するセッションスコープ
+     * @param model
+     * @return リダイレクト先
+     */
+    @PostMapping("/login")
+    public String login(
+    @Validated LoginForm form
+    ,BindingResult result
+    ,HttpSession administratorName
+    ,Model model) {
+        if(result.hasErrors()) {
+            return "administrator/login";
+        }
+
+        Administrator administrator = service.login(form.getMailAddress(), form.getPassword());
+        if(administrator == null) {
+            model.addAttribute("error", "メールアドレスまたはパスワードが不正です。");
+            return "administrator/login";
+        }else {
+            administratorName.setAttribute("name", administrator.getName());
+            return "redirect:/employee/showList";
+        }
+    }
+
+    /**
+     * 従業員情報一覧ページにフォワード
+     * @return 従業員情報一覧ページ
+     */
+    @RequestMapping("/employee/showList")
+    public String showList() {
+        return "employee/list";
+    }
+
 }
