@@ -103,6 +103,12 @@ public class AdministratorController {
         return "employee/list";
     }
 
+    /**
+     * セッション情報をクリアし、ログイン画面に移動する
+     * @param form　
+     * @param session
+     * @return　ログイン画面
+     */
     @GetMapping("/logout")
     public String logout(LoginForm form, HttpSession session) {
         session.invalidate();
