@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * 管理者テーブルに対応するコントローラクラス
  * 必要な情報をフォームから受け取り、サービスを通じて処理を行う
+ * @Author 野上
  */
 @Controller
 @RequestMapping("/")
@@ -48,7 +49,7 @@ public class AdministratorController {
         Administrator administrator = new Administrator();
         BeanUtils.copyProperties(form, administrator);
         service.insert(administrator);
-        return "/";
+        return "redirect:/";
 
     }
 
@@ -88,7 +89,7 @@ public class AdministratorController {
             model.addAttribute("error", "メールアドレスまたはパスワードが不正です。");
             return "administrator/login";
         }else {
-            administratorName.setAttribute("name", administrator.getName());
+            administratorName.setAttribute("administratorName", administrator.getName());
             return "redirect:/employee/showList";
         }
     }
@@ -100,6 +101,18 @@ public class AdministratorController {
     @RequestMapping("/employee/showList")
     public String showList() {
         return "employee/list";
+    }
+
+    /**
+     * セッション情報をクリアし、ログイン画面に移動する
+     * @param form　
+     * @param session
+     * @return　ログイン画面
+     */
+    @GetMapping("/logout")
+    public String logout(LoginForm form, HttpSession session) {
+        session.invalidate();
+        return "administrator/login";
     }
 
 }

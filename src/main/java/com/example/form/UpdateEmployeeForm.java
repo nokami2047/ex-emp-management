@@ -2,11 +2,12 @@ package com.example.form;
 
 /**
  * 従業員一覧画面に対応するフォームクラス
+ * @Author 野上
  */
 public class UpdateEmployeeForm {
 
     private String id;
-    private String dependentsCoun;
+    private String dependentsCount;
     
     public String getId() {
         return id;
@@ -14,15 +15,16 @@ public class UpdateEmployeeForm {
     public void setId(String id) {
         this.id = id;
     }
-    public String getDependentsCoun() {
-        return dependentsCoun;
+    public String getDependentsCount() {
+        return dependentsCount;
     }
-    public void setDependentsCoun(String dependentsCoun) {
-        this.dependentsCoun = dependentsCoun;
+    public void setDependentsCount(String dependentsCount) {
+        this.dependentsCount = dependentsCount;
     }
 
     @Override
     public String toString() {
-        return "UpdateEmployeeForm [id=" + id + ", dependentsCoun=" + dependentsCoun + "]";
+        return "UpdateEmployeeForm [id=" + id + ", dependentsCount=" + dependentsCount + "]";
     }
+    
 }

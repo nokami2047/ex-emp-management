@@ -46,9 +46,9 @@
               <fieldset>
                 <legend>ログイン</legend>
 
-                <div class="form-group">
+                <div th:if="${error}" class="form-group">
                   <div class="alert alert-danger">
-                    <div th:if="${error}" style="color:red" th:text="${error}"></div>
+                    <div style="color:red" th:text="${error}"></div>
                   </div>
                 </div>
                 <div class="form-group">

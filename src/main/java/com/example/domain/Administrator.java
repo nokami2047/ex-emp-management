@@ -2,6 +2,7 @@ package com.example.domain;
 
 /**
  * administratorsテーブルに対応するドメインクラス
+ * @Author 野上
  */
 public class Administrator {
 
